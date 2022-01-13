@@ -62,16 +62,18 @@ const usuariosPost = async (req, res) => {
 
 const usuariosDelete = async (req, res) => {
   const { id } = req.params;
-  const uid = req.uid;
+
+
   // Fisicamente lo borramos
   // Manera tradicional borrando completamente el usuario
   //const user = await User.findByIdAndDelete(id, body);
-
   // Manera moderna de borrar un usuario sin borrarlo de la base de datos
-  const user = await User.findByIdAndUpdate(id, { state: false })
+  const user = await User.findByIdAndUpdate(id, { state: false });
+
+  const authenticatedUser = req.user;
   res.json({
-    uid,
-    user
+    user,
+    authenticatedUser,
   });
 }
 
