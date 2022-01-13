@@ -32,6 +32,7 @@ router.post('/', [
 ], usuariosPost);
 
 
+
 router.delete('/:id', [
   check('id', 'Not a valid ID').isMongoId(),
   check('id').custom((id) => mongoIdExist(id)),
