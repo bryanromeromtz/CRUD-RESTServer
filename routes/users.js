@@ -10,6 +10,7 @@ const {
   usuariosDelete
 } = require('../controller/users');
 const { validateFields } = require('../middlewares/validate-fields');
+const { validateJWT } = require('../middlewares/validate-jwt');
 
 
 router.get('/', usuariosGet);
@@ -34,9 +35,10 @@ router.post('/', [
 
 
 router.delete('/:id', [
+  validateJWT,
   check('id', 'Not a valid ID').isMongoId(),
   check('id').custom((id) => mongoIdExist(id)),
-  validateFields
+  validateFields,
 ], usuariosDelete);
 
 

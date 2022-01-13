@@ -35,10 +35,13 @@ const UserSchema = Schema({
 
 // Ocultar password y __v de la extraccion de datos
 UserSchema.methods.toJSON = function () {
-  const { __v, password, ...user } = this.toObject();
+  const { __v, password, _id, ...user } = this.toObject();
   // console.log(__v);
   // console.log(password);
   // console.log(user);
+  user.uid = _id;
+  console.log(user.uid);
+
   return user;
 }
 
