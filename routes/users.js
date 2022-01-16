@@ -10,10 +10,15 @@ const {
   usuariosDelete
 } = require('../controller/users');
 
-const { validateFields } = require('../middlewares/validate-fields');
-const { validateJWT } = require('../middlewares/validate-jwt');
-const { adminRole, hasARole } = require('../middlewares/validate-roles');
-
+// const { validateFields } = require('../middlewares/validate-fields');
+// const { validateJWT } = require('../middlewares/validate-jwt');
+// const { adminRole, hasARole } = require('../middlewares/validate-roles');
+const {
+  validateFields,
+  validateJWT,
+  adminRole,
+  hasARole
+} = require('../middlewares');
 
 router.get('/', usuariosGet);
 
