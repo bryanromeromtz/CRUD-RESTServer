@@ -11,8 +11,8 @@ const {
 } = require('../controller/users');
 
 const { validateFields } = require('../middlewares/validate-fields');
-const { adminRole } = require('../middlewares/validate-roles');
 const { validateJWT } = require('../middlewares/validate-jwt');
+const { adminRole, hasARole } = require('../middlewares/validate-roles');
 
 
 router.get('/', usuariosGet);
@@ -38,7 +38,8 @@ router.post('/', [
 
 router.delete('/:id', [
   validateJWT,
-  adminRole,
+  //adminRole,
+  hasARole('ADMIN_ROLE', 'USER_ROLE'),
   check('id', 'Not a valid ID').isMongoId(),
   check('id').custom((id) => mongoIdExist(id)),
   validateFields,

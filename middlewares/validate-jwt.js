@@ -4,7 +4,7 @@ const User = require('../models/user');
 
 const validateJWT = async (req, res, next) => {
   const token = req.header('x-token');
-  console.log(token);
+  //console.log(token);
   if (!token) {
     return res.status(401).json({
       msg: 'There is no token in the request'
@@ -29,7 +29,6 @@ const validateJWT = async (req, res, next) => {
     }
 
     req.user = user
-    console.log(uid);
     next();
   } catch (error) {
     console.log(error);

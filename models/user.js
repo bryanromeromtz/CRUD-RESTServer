@@ -40,7 +40,7 @@ UserSchema.methods.toJSON = function () {
   // console.log(password);
   // console.log(user);
   user.uid = _id;
-  console.log(user.uid);
+  //console.log(user.uid);
 
   return user;
 }
